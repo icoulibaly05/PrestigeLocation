@@ -6,6 +6,20 @@ $sql = "SELECT louer.id_louer, louer.date_debut, louer.date_fin, voitures.marque
         JOIN voitures ON louer.immatriculation = voitures.immatriculation
         JOIN clients ON louer.id_client = clients.id_client";
 $result = $conn->query($sql);
+ 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['add'])) {
+        $id_client = $_POST['id_client'];
+        $immatriculation = $_POST['immatriculation'];
+        $date_debut = $_POST['date_debut'];
+        $date_fin = $_POST['date_fin'];
+        $compteur_debut = $_POST['compteur_debut'];
+        $compteur_fin = $_POST['compteur_fin'];
+ 
+        $sql = "INSERT INTO louer (id_client, immatriculation, date_debut, date_fin, compteur_debut, compteur_fin) VALUES ('$id_client', '$immatriculation', '$date_debut', '$date_fin', '$compteur_debut', '$compteur_fin')";
+        $conn->query($sql);
+    }
+}
 ?>
  
 <!DOCTYPE html>
@@ -48,9 +62,37 @@ $result = $conn->query($sql);
             } else {
                 echo "<p class='text-center'>0 résultats</p>";
             }
-            $conn->close();
             ?>
 </div>
+<h2>Ajouter une nouvelle réservation</h2>
+<form method="POST" action="reservations.php">
+<input type="hidden" name="add">
+<div class="form-group">
+<label for="id_client">ID Client</label>
+<input type="number" class="form-control" name="id_client" required>
+</div>
+<div class="form-group">
+<label for="immatriculation">Immatriculation</label>
+<input type="text" class="form-control" name="immatriculation" required>
+</div>
+<div class="form-group">
+<label for="date_debut">Date de début</label>
+<input type="date" class="form-control" name="date_debut" required>
+</div>
+<div class="form-group">
+<label for="date_fin">Date de fin</label>
+<input type="date" class="form-control" name="date_fin" required>
+</div>
+<div class="form-group">
+<label for="compteur_debut">Compteur de début</label>
+<input type="number" class="form-control" name="compteur_debut" required>
+</div>
+<div class="form-group">
+<label for="compteur_fin">Compteur de fin</label>
+<input type="number" class="form-control" name="compteur_fin" required>
+</div>
+<button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
 </main>
 <footer class="bg-dark text-white text-center py-3">
 <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
