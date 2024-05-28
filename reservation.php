@@ -1,7 +1,10 @@
 <?php
 include 'config.php';
  
-$sql = "SELECT id_louer, id_client, date_debut, date_fin, immatriculation FROM louer";
+$sql = "SELECT louer.id_louer, louer.date_debut, louer.date_fin, voitures.marque, voitures.modele, clients.nom, clients.prenom
+        FROM louer
+        JOIN voitures ON louer.immatriculation = voitures.immatriculation
+        JOIN clients ON louer.id_client = clients.id_client";
 $result = $conn->query($sql);
 ?>
  
@@ -34,10 +37,10 @@ $result = $conn->query($sql);
                     echo "<div class='card'>";
                     echo "<div class='card-body'>";
                     echo "<h5 class='card-title'>Réservation ID : " . $row["id_louer"] . "</h5>";
-                    echo "<p class='card-text'>Client ID : " . $row["id_client"] . "</p>";
+                    echo "<p class='card-text'>Client : " . $row["nom"] . " " . $row["prenom"] . "</p>";
+                    echo "<p class='card-text'>Voiture : " . $row["marque"] . " " . $row["modele"] . "</p>";
                     echo "<p class='card-text'>Date de début : " . $row["date_debut"] . "</p>";
                     echo "<p class='card-text'>Date de fin : " . $row["date_fin"] . "</p>";
-                    echo "<p class='card-text'>Immatriculation : " . $row["immatriculation"] . "</p>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
