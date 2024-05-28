@@ -11,43 +11,49 @@ $result = $conn->query($sql);
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nos Réservations</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
+<header class="bg-dark text-white text-center py-3">
 <h1>Nos Réservations</h1>
-<nav>
-<ul>
-<li><a href="index.html">Accueil</a></li>
-<li><a href="voitures.php">Voitures</a></li>
-<li><a href="clients.php">Clients</a></li>
-<li><a href="reservations.php">Réservations</a></li>
-</ul>
+<nav class="nav justify-content-center">
+<a class="nav-link text-white" href="index.php">Accueil</a>
+<a class="nav-link text-white" href="voitures.php">Voitures</a>
+<a class="nav-link text-white" href="clients.php">Clients</a>
+<a class="nav-link text-white" href="reservations.php">Réservations</a>
 </nav>
 </header>
-<main>
+<main class="container my-5">
 <h2>Liste des réservations</h2>
-<div class="reservations">
+<div class="row">
 <?php
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<div class='reservation'>";
-                    echo "<h3>Réservation ID : " . $row["id_louer"] . "</h3>";
-                    echo "<p>Client ID : " . $row["id_client"] . "</p>";
-                    echo "<p>Date de début : " . $row["date_debut"] . "</p>";
-                    echo "<p>Date de fin : " . $row["date_fin"] . "</p>";
-                    echo "<p>Immatriculation : " . $row["immatriculation"] . "</p>";
+                    echo "<div class='col-md-4 mb-4'>";
+                    echo "<div class='card'>";
+                    echo "<div class='card-body'>";
+                    echo "<h5 class='card-title'>Réservation ID : " . $row["id_louer"] . "</h5>";
+                    echo "<p class='card-text'>Client ID : " . $row["id_client"] . "</p>";
+                    echo "<p class='card-text'>Date de début : " . $row["date_debut"] . "</p>";
+                    echo "<p class='card-text'>Date de fin : " . $row["date_fin"] . "</p>";
+                    echo "<p class='card-text'>Immatriculation : " . $row["immatriculation"] . "</p>";
+                    echo "</div>";
+                    echo "</div>";
                     echo "</div>";
                 }
             } else {
-                echo "0 résultats";
+                echo "<p class='text-center'>0 résultats</p>";
             }
             $conn->close();
             ?>
 </div>
 </main>
-<footer>
+<footer class="bg-dark text-white text-center py-3">
 <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
 </footer>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
