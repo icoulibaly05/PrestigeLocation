@@ -14,7 +14,7 @@
             <a class="nav-link text-white" href="index.php">Accueil</a>
             <a class="nav-link text-white" href="voitures.php">Voitures</a>
             <a class="nav-link text-white" href="clients.php">Clients</a>
-            <a class="nav-link text-white" href="reservations.php">Réservations</a>
+            <a class="nav-link text-white" href="reservation.php">Réservations</a>
         </nav>
     </header>
     <main class="container my-5">
