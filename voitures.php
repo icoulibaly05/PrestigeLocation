@@ -21,7 +21,7 @@ $result = $conn->query($sql);
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="voitures.php">Voitures</a></li>
                 <li><a href="clients.php">Clients</a></li>
-                <li><a href="reservations.php">Réservations</a></li>
+                <li><a href="reservation.php">Réservations</a></li>
             </ul>
         </nav>
     </header>
