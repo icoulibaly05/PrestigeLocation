@@ -14,12 +14,12 @@
             <a class="nav-link text-white" href="index.php">Accueil</a>
             <a class="nav-link text-white" href="voitures.php">Voitures</a>
             <a class="nav-link text-white" href="clients.php">Clients</a>
-            <a class="nav-link text-white" href="reservation.php">Réservations</a>
+            <a class="nav-link text-white" href="reservations.php">Réservations</a>
         </nav>
     </header>
     <main class="container my-5">
-        <h2>Nos voitures disponibles</h2>
-        <p>Bienvenue sur notre site de location de voitures. Vous pouvez consulter les voitures disponibles, les clients et les réservations à partir des liens ci-dessus.</p>
+        <h2>Bienvenue</h2>
+        <p>Utilisez les liens ci-dessus pour naviguer dans le site et gérer les voitures, les clients et les réservations.</p>
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>

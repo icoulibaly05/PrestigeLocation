@@ -1,7 +1,7 @@
 <?php
 include 'config.php';
 
-$sql = "SELECT immatriculation, marque, modele, image FROM voitures";
+$sql = "SELECT immatriculation, marque, modele, image, compteur, id_categorie FROM voitures";
 $result = $conn->query($sql);
 ?>
 
@@ -27,7 +27,17 @@ $result = $conn->query($sql);
     <main class="container my-5">
         <h2>Liste des voitures disponibles</h2>
         <div class="row">
+            <div class="col-md-12 mb-4">
+                <form method="GET" action="voitures.php">
+                    <input type="text" name="search" class="form-control" placeholder="Rechercher une voiture...">
+                </form>
+            </div>
             <?php
+            if (isset($_GET['search'])) {
+                $search = $_GET['search'];
+                $sql = "SELECT immatriculation, marque, modele, image, compteur, id_categorie FROM voitures WHERE marque LIKE '%$search%' OR modele LIKE '%$search%' OR immatriculation LIKE '%$search%'";
+                $result = $conn->query($sql);
+            }
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<div class='col-md-4 mb-4'>";
@@ -36,6 +46,7 @@ $result = $conn->query($sql);
                     echo "<div class='card-body'>";
                     echo "<h5 class='card-title'>" . $row["marque"] . " " . $row["modele"] . "</h5>";
                     echo "<p class='card-text'>Immatriculation : " . $row["immatriculation"] . "</p>";
+                    echo "<p class='card-text'>Compteur : " . $row["compteur"] . " km</p>";
                     echo "</div>";
                     echo "</div>";
                     echo "</div>";
@@ -48,10 +59,4 @@ $result = $conn->query($sql);
         </div>
     </main>
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+        <p>&copy; 
