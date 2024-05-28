@@ -3,6 +3,18 @@ include 'config.php';
 
 $sql = "SELECT id_client, nom, prenom, adresse FROM clients";
 $result = $conn->query($sql);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['add'])) {
+        $nom = $_POST['nom'];
+        $prenom = $_POST['prenom'];
+        $adresse = $_POST['adresse'];
+        $id_type_client = $_POST['id_type_client'];
+
+        $sql = "INSERT INTO clients (nom, prenom, adresse, id_type_client) VALUES ('$nom', '$prenom', '$adresse', '$id_type_client')";
+        $conn->query($sql);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +55,29 @@ $result = $conn->query($sql);
             } else {
                 echo "<p class='text-center'>0 résultats</p>";
             }
-            $conn->close();
             ?>
         </div>
+        <h2>Ajouter un nouveau client</h2>
+        <form method="POST" action="clients.php">
+            <input type="hidden" name="add">
+            <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" class="form-control" name="nom" required>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Prénom</label>
+                <input type="text" class="form-control" name="prenom" required>
+            </div>
+            <div class="form-group">
+                <label for="adresse">Adresse</label>
+                <input type="text" class="form-control" name="adresse" required>
+            </div>
+            <div class="form-group">
+                <label for="id_type_client">Type de Client</label>
+                <input type="text" class="form-control" name="id_type_client" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
