@@ -1,6 +1,4 @@
 <?php include 'templates/header.php'; ?>
-<h2>Bienvenue sur notre site de gestion de location de voitures</h2>
-<p>Utilisez le menu pour naviguer dans les différentes sections du site.</p>
+<h2>Bienvenue chez Prestiges Location</h2>
+<p>Le prestige a porté de main</p>
 <?php include 'templates/footer.php'; ?>
-
-Dispose d’un menu contextuel

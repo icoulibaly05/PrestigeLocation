@@ -1,43 +1,43 @@
 <?php include 'config.php'; ?>
 <?php include 'templates/header.php'; ?>
- 
+
 <h2>Gestion des Voitures</h2>
 <a href="ajouter_voiture.php">Ajouter une Voiture</a>
 <table>
-<thead>
-<tr>
-<th>Immatriculation</th>
-<th>Marque</th>
-<th>Modèle</th>
-<th>Catégorie</th>
-<th>Actions</th>
-</tr>
-</thead>
-<tbody>
-<?php
+    <thead>
+        <tr>
+            <th>Immatriculation</th>
+            <th>Marque</th>
+            <th>Modèle</th>
+            <th>Catégorie</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
         $sql = "SELECT v.immatriculation, v.marque, v.modele, c.categorie
                 FROM voitures v
                 JOIN categories c ON v.id_categorie = c.id_categorie";
         $result = $conn->query($sql);
- 
+
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
-<td>{$row['immatriculation']}</td>
-<td>{$row['marque']}</td>
-<td>{$row['modele']}</td>
-<td>{$row['categorie']}</td>
-<td>
-<a href='modifier_voiture.php?id={$row['immatriculation']}'>Modifier</a>
-<a href='supprimer_voiture.php?id={$row['immatriculation']}'>Supprimer</a>
-</td>
-</tr>";
+                        <td>{$row['immatriculation']}</td>
+                        <td>{$row['marque']}</td>
+                        <td>{$row['modele']}</td>
+                        <td>{$row['categorie']}</td>
+                        <td>
+                            <a href='modifier_voiture.php?id={$row['immatriculation']}'>Modifier</a>
+                            <a href='supprimer_voiture.php?id={$row['immatriculation']}'>Supprimer</a>
+                        </td>
+                      </tr>";
             }
         } else {
             echo "<tr><td colspan='5'>Aucune voiture trouvée</td></tr>";
         }
         ?>
-</tbody>
+    </tbody>
 </table>
- 
+
 <?php include 'templates/footer.php'; ?>
