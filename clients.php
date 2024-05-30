@@ -28,7 +28,7 @@ include 'templates/header.php';
                         <td>{$row['nom']}</td>
                         <td>{$row['prenom']}</td>
                         <td>{$row['adresse']}</td>
-                        <td><img src='images/{$row['photo']}' alt='Photo du client' width='100'></td>
+                        <td><img src='images/{$row['photo']}' alt='Photo du client' width='100' class='clickable'></td>
                         <td>
                             <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
                             <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
@@ -36,7 +36,7 @@ include 'templates/header.php';
                       </tr>";
             }
         } else {
-            echo"<tr><td colspan='6'>Aucun client trouvé</td></tr>";
+            echo "<tr><td colspan='6'>Aucun client trouvé</td></tr>";
         }
         ?>
     </tbody>

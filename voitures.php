@@ -30,7 +30,7 @@ include 'templates/header.php';
                         <td>{$row['marque']}</td>
                         <td>{$row['modele']}</td>
                         <td>{$row['categorie']}</td>
-                        <td><img src='images/{$row['image']}' alt='Image de la voiture' width='100'></td>
+                        <td><img src='images/{$row['image']}' alt='Image de la voiture' width='100' class='clickable'></td>
                         <td>
                             <a href='modifier_voiture.php?id={$row['immatriculation']}'>Modifier</a>
                             <a href='supprimer_voiture.php?id={$row['immatriculation']}'>Supprimer</a>
