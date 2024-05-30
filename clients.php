@@ -36,7 +36,7 @@ include 'templates/header.php';
                       </tr>";
             }
         } else {
-            echo "<tr><td colspan='6'>Aucun client trouvé</td></tr>";
+            echo"<tr><td colspan='6'>Aucun client trouvé</td></tr>";
         }
         ?>
     </tbody>
