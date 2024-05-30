@@ -1,4 +1,3 @@
-<?php include 'config.php'; ?>
 <?php include 'templates/header.php'; ?>
  
 <h2>Gestion des Clients</h2>
@@ -10,6 +9,7 @@
 <th>Nom</th>
 <th>Prénom</th>
 <th>Adresse</th>
+<th>Photo</th>
 <th>Actions</th>
 </tr>
 </thead>
@@ -25,6 +25,7 @@
 <td>{$row['nom']}</td>
 <td>{$row['prenom']}</td>
 <td>{$row['adresse']}</td>
+<td><img src='images/{$row['photo']}' alt='Photo du client' width='100'></td>
 <td>
 <a href='modifier_client.php?id={$row['id_client']}'>Modifier</a>
 <a href='supprimer_client.php?id={$row['id_client']}'>Supprimer</a>
@@ -32,10 +33,15 @@
 </tr>";
             }
         } else {
-            echo "<tr><td colspan='5'>Aucun client trouvé</td></tr>";
+            echo "<tr><td colspan='6'>Aucun client trouvé</td></tr>";
         }
         ?>
 </tbody>
 </table>
  
 <?php include 'templates/footer.php'; ?>
+
+Dispose d’un menu contextuel
+
+
+Dispose d’un menu contextuel

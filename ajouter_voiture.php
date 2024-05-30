@@ -2,7 +2,7 @@
 <?php include 'templates/header.php'; ?>
  
 <h2>Ajouter une Voiture</h2>
-<form action="ajouter_voiture.php" method="post">
+<form action="ajouter_voiture.php" method="post" enctype="multipart/form-data">
 <label for="immatriculation">Immatriculation:</label>
 <input type="text" id="immatriculation" name="immatriculation" required>
 <label for="marque">Marque:</label>
@@ -19,6 +19,8 @@
         }
         ?>
 </select>
+<label for="image">Image:</label>
+<input type="file" id="image" name="image" accept="image/*" required>
 <button type="submit" name="submit">Ajouter</button>
 </form>
  
@@ -28,13 +30,19 @@ if (isset($_POST['submit'])) {
     $marque = $_POST['marque'];
     $modele = $_POST['modele'];
     $id_categorie = $_POST['id_categorie'];
+    $image = $_FILES['image']['name'];
+    $target = "images/" . basename($image);
  
-    $sql = "INSERT INTO voitures (immatriculation, marque, modele, id_categorie)
-            VALUES ('$immatriculation', '$marque', '$modele', '$id_categorie')";
-    if ($conn->query($sql) === TRUE) {
-        echo "<p>Voiture ajoutée avec succès</p>";
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        $sql = "INSERT INTO voitures (immatriculation, marque, modele, id_categorie, image)
+                VALUES ('$immatriculation', '$marque', '$modele', '$id_categorie', '$image')";
+        if ($conn->query($sql) === TRUE) {
+            echo "<p>Voiture ajoutée avec succès</p>";
+        } else {
+            echo "<p>Erreur: " . $conn->error . "</p>";
+        }
     } else {
-        echo "<p>Erreur: " . $conn->error . "</p>";
+        echo "<p>Erreur lors du téléchargement de l'image.</p>";
     }
 }
 ?>
