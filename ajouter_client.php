@@ -31,9 +31,9 @@
 
 <?php
 if (isset($_POST['submit'])) {
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $adresse = $_POST['adresse'];
+    $nom = $conn->real_escape_string($_POST['nom']);
+    $prenom = $conn->real_escape_string($_POST['prenom']);
+    $adresse = $conn->real_escape_string($_POST['adresse']);
     $id_type_client = $_POST['id_type_client'];
     $photo = $_FILES['photo']['name'];
     $target = "images/" . basename($photo);
