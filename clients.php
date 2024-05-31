@@ -1,10 +1,12 @@
-<?php
-include 'config.php';
-include 'templates/header.php';
-?>
+<?php include 'config.php'; ?>
+<?php include 'templates/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<div class="button-container">
+    <a href="ajouter_client.php" class="button">Ajouter un Client</a>
+</div>
 
 <h2>Gestion des Clients</h2>
-<a href="ajouter_client.php">Ajouter un Client</a>
 <table>
     <thead>
         <tr>

@@ -1,10 +1,12 @@
-<?php
-include 'config.php';
-include 'templates/header.php';
-?>
+<?php include 'config.php'; ?>
+<?php include 'templates/header.php'; ?>
+<link rel="stylesheet" type="text/css" href="styles.css">
+
+<div class="button-container">
+    <a href="ajouter_voiture.php" class="button">Ajouter une Voiture</a>
+</div>
 
 <h2>Gestion des Voitures</h2>
-<a href="ajouter_voiture.php">Ajouter une Voiture</a>
 <table>
     <thead>
         <tr>
