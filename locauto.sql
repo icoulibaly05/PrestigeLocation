@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : lun. 03 juin 2024 à 13:04
+-- Généré le : mar. 04 juin 2024 à 09:58
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -38,14 +38,14 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id_categorie`, `categorie`, `prix`) VALUES
-('', 'Électrique', 0.00),
 ('A', 'Citadine', 60.00),
 ('B', 'Economique', 72.00),
 ('C', 'Compacte', 80.00),
-('D', 'Intermediaire', 95.00),
+('D', '4x4', 95.00),
 ('E', 'Berline', 120.00),
 ('F', 'Grande berline', 150.00),
 ('G', 'Sport, SUV', 230.00),
+('H', 'Électrique', 0.00),
 ('V', 'Luxe', 350.00);
 
 -- --------------------------------------------------------
@@ -208,20 +208,24 @@ INSERT INTO `voitures` (`immatriculation`, `marque`, `modele`, `image`, `compteu
 ('BMW-M3-001', 'B.M.W.', 'M3', 'R (2).jpeg', 1000, 'G'),
 ('BMW-M4CS-001', 'B.M.W.', 'M4 CS', 'm4.jpeg', 2000, 'G'),
 ('BMW-X6M-001', 'B.M.W.', 'X6M', 'OIP (5).jpeg', 1500, 'G'),
+('CHEVY-CAM-001', 'Chevrolet ', 'Camaro Bumblebee edition', 'chevrolet-camaro_100684917_h.jpg', 0, 'G'),
+('DODG-DMN-001', 'Dodge', 'Charger Demon 170', 'dodge demon.jpeg', 0, 'G'),
 ('FERRARI-488-001', 'Ferrari', '488 Pista', 'ferrari_488_pista_spider_4k-HD.jpg', 500, 'G'),
 ('FERRARI-PURO-001', 'Ferrari', 'Purosangue', 'puro.jpeg', 0, 'G'),
 ('LAMB-URS-001', 'Lamborghini', 'Urus', 'R (4).jpeg', 0, 'G'),
+('LEX-LX570-001', 'Lexus', 'LX 570 Super Sport', 'LEXUS LX 570 SPORT PACKAGE 2020 02.jpg', 0, 'D'),
 ('MB-G63-001', 'Mercedes', 'Classe G 63 AMG', 'R (3).jpeg', 1500, 'G'),
 ('MB-GLE63S-001', 'Mercedes', 'GLE 63 S AMG Coupé', '5fa2e13ea89f51.26828109.jpeg', 1500, 'G'),
 ('MB-GLE63S-002', 'Mercedes', 'GLE 63S', 'OIP (9).jpeg', 0, 'G'),
 ('MB-S680-001', 'Mercedes', 'Classe S 680 Maybach', '2021-Mercedes-Maybach-S-Cla-1024x555.jpg', 1600, 'V'),
+('PORSCH-PANA-001', 'Porshe', 'Panamera', 'porsche.jpeg', 0, 'F'),
 ('PORSCHE-CAYMAN-0', 'Porsche', 'Cayman GT4 RS', '11297_large.jpg', 1100, 'G'),
 ('RR-CULLINAN-001', 'Rolls Royce', 'Cullinan', '402185-2020-rolls-royce-cullinan.jpg', 900, 'V'),
 ('RR-SPECTRE-001', 'Rolls Royce', 'Spectre', 'OIP (6).jpeg', 800, 'V'),
-('TESLA-3-001', 'Tesla', 'Model 3', 'OIP (7).jpeg', 600, 'B'),
-('TESLA-S-001', 'Tesla', 'Model S', 'OIP (8).jpeg', 500, 'B'),
-('TESLA-X-001', 'Tesla', 'Model X', 'tesla x.jpeg', 700, 'B'),
-('TESLA-X-002', 'Tesla', 'Model X', 'tesla x.jpeg', 0, 'B');
+('TESLA-3-001', 'Tesla', 'Model 3', 'OIP (7).jpeg', 600, 'H'),
+('TESLA-S-001', 'Tesla', 'Model S', 'OIP (8).jpeg', 500, 'H'),
+('TESLA-X-001', 'Tesla', 'Model X', 'tesla x.jpeg', 700, 'H'),
+('TOYOTA-LC-001', 'Toyota', 'Land Cruiser 300', 'v8 gr.jpeg', 0, 'D');
 
 --
 -- Index pour les tables déchargées
