@@ -15,6 +15,7 @@
 <li><a href="voitures.php">Voitures</a></li>
 <li><a href="clients.php">Clients</a></li>
 <li><a href="locations.php">Locations</a></li>
+<li><a href="dispo.php">Voitures Disponible</a></li>
 </ul>
 </nav>
 </header>
