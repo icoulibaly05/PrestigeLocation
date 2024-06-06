@@ -1,6 +1,6 @@
 </main>
 <footer>
-<p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
+    <p>&copy; 2024 Location de Voitures. Tous droits réservés.</p>
 </footer>
 <div id="lightbox" class="lightbox">
     <span class="close" id="close">&times;</span>
