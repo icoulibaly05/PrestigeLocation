@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 04 juin 2024 à 09:58
+-- Généré le : jeu. 06 juin 2024 à 13:05
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -47,18 +47,6 @@ INSERT INTO `categories` (`id_categorie`, `categorie`, `prix`) VALUES
 ('G', 'Sport, SUV', 230.00),
 ('H', 'Électrique', 0.00),
 ('V', 'Luxe', 350.00);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `choixoptions`
---
-
-CREATE TABLE `choixoptions` (
-  `id_choix_option` int(11) NOT NULL,
-  `id_option` int(11) NOT NULL,
-  `id_louer` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -117,8 +105,7 @@ CREATE TABLE `louer` (
 --
 
 INSERT INTO `louer` (`id_louer`, `id_client`, `immatriculation`, `date_debut`, `date_fin`, `compteur_debut`, `compteur_fin`) VALUES
-(0, 0, 'FERRARI-488-001', '2024-05-31', '2025-05-31', 0, 0),
-(1, 1, 'BMW-M3-001', '2024-06-01', '2024-06-07', 1000, 1500),
+(1, 0, 'FERRARI-488-001', '2024-05-31', '2025-05-31', 0, 0),
 (2, 2, 'BMW-M4CS-001', '2024-06-01', '2024-06-07', 2000, 2500),
 (3, 3, 'BMW-X6M-001', '2024-06-01', '2024-06-07', 1500, 2000),
 (4, 4, 'MB-G63-001', '2024-06-01', '2024-06-07', 1500, 2000),
@@ -132,7 +119,8 @@ INSERT INTO `louer` (`id_louer`, `id_client`, `immatriculation`, `date_debut`, `
 (12, 12, 'TESLA-X-001', '2024-06-01', '2024-06-07', 700, 1200),
 (13, 13, 'AUDI-RS3-001', '2024-06-01', '2024-06-07', 1000, 1500),
 (14, 14, 'MB-GLE63S-002', '2024-06-04', '2024-11-16', 1500, 2000),
-(15, 15, 'PORSCHE-CAYMAN-0', '2024-06-01', '2024-06-07', 1100, 1600);
+(15, 15, 'PORSCHE-CAYMAN-0', '2024-06-01', '2024-06-07', 1100, 1600),
+(16, 1, 'DODG-DMN-001', '2024-06-06', '2024-06-29', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -191,41 +179,42 @@ CREATE TABLE `voitures` (
   `modele` varchar(256) NOT NULL,
   `image` varchar(64) NOT NULL,
   `compteur` int(11) NOT NULL,
-  `id_categorie` varchar(1) NOT NULL
+  `id_categorie` varchar(1) NOT NULL,
+  `disponible` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Déchargement des données de la table `voitures`
 --
 
-INSERT INTO `voitures` (`immatriculation`, `marque`, `modele`, `image`, `compteur`, `id_categorie`) VALUES
-('ALFA-GIULIA-001', 'Alfa Romeo', 'Giulia', 'OIP (3).jpeg', 0, 'G'),
-('AUDI-RS3-001', 'Audi', 'RS3', 'Audi-RS3-Performance-Edition-2023-3.jpg', 1000, 'G'),
-('AUDI-RS6-001', 'Audi', 'RS6', 'OIP (4).jpeg', 1200, 'G'),
-('AUDI-RS7-001', 'Audi', 'RS7 ABT', 'OIP (1).jpeg', 1500, 'G'),
-('BENTLEY-BENTAYGA', 'Bentley', 'Bentayga', 'R (1).jpeg', 1200, 'V'),
-('BMW-7-001', 'B.M.W.', 'Série 7', 'OIP (2).jpeg', 1800, 'F'),
-('BMW-M3-001', 'B.M.W.', 'M3', 'R (2).jpeg', 1000, 'G'),
-('BMW-M4CS-001', 'B.M.W.', 'M4 CS', 'm4.jpeg', 2000, 'G'),
-('BMW-X6M-001', 'B.M.W.', 'X6M', 'OIP (5).jpeg', 1500, 'G'),
-('CHEVY-CAM-001', 'Chevrolet ', 'Camaro Bumblebee edition', 'chevrolet-camaro_100684917_h.jpg', 0, 'G'),
-('DODG-DMN-001', 'Dodge', 'Charger Demon 170', 'dodge demon.jpeg', 0, 'G'),
-('FERRARI-488-001', 'Ferrari', '488 Pista', 'ferrari_488_pista_spider_4k-HD.jpg', 500, 'G'),
-('FERRARI-PURO-001', 'Ferrari', 'Purosangue', 'puro.jpeg', 0, 'G'),
-('LAMB-URS-001', 'Lamborghini', 'Urus', 'R (4).jpeg', 0, 'G'),
-('LEX-LX570-001', 'Lexus', 'LX 570 Super Sport', 'LEXUS LX 570 SPORT PACKAGE 2020 02.jpg', 0, 'D'),
-('MB-G63-001', 'Mercedes', 'Classe G 63 AMG', 'R (3).jpeg', 1500, 'G'),
-('MB-GLE63S-001', 'Mercedes', 'GLE 63 S AMG Coupé', '5fa2e13ea89f51.26828109.jpeg', 1500, 'G'),
-('MB-GLE63S-002', 'Mercedes', 'GLE 63S', 'OIP (9).jpeg', 0, 'G'),
-('MB-S680-001', 'Mercedes', 'Classe S 680 Maybach', '2021-Mercedes-Maybach-S-Cla-1024x555.jpg', 1600, 'V'),
-('PORSCH-PANA-001', 'Porshe', 'Panamera', 'porsche.jpeg', 0, 'F'),
-('PORSCHE-CAYMAN-0', 'Porsche', 'Cayman GT4 RS', '11297_large.jpg', 1100, 'G'),
-('RR-CULLINAN-001', 'Rolls Royce', 'Cullinan', '402185-2020-rolls-royce-cullinan.jpg', 900, 'V'),
-('RR-SPECTRE-001', 'Rolls Royce', 'Spectre', 'OIP (6).jpeg', 800, 'V'),
-('TESLA-3-001', 'Tesla', 'Model 3', 'OIP (7).jpeg', 600, 'H'),
-('TESLA-S-001', 'Tesla', 'Model S', 'OIP (8).jpeg', 500, 'H'),
-('TESLA-X-001', 'Tesla', 'Model X', 'tesla x.jpeg', 700, 'H'),
-('TOYOTA-LC-001', 'Toyota', 'Land Cruiser 300', 'v8 gr.jpeg', 0, 'D');
+INSERT INTO `voitures` (`immatriculation`, `marque`, `modele`, `image`, `compteur`, `id_categorie`, `disponible`) VALUES
+('ALFA-GIULIA-001', 'Alfa Romeo', 'Giulia', 'OIP (3).jpeg', 0, 'G', 1),
+('AUDI-RS3-001', 'Audi', 'RS3', 'Audi-RS3-Performance-Edition-2023-3.jpg', 1000, 'G', 1),
+('AUDI-RS6-001', 'Audi', 'RS6', 'OIP (4).jpeg', 1200, 'G', 1),
+('AUDI-RS7-001', 'Audi', 'RS7 ABT', 'OIP (1).jpeg', 1500, 'G', 1),
+('BENTLEY-BENTAYGA', 'Bentley', 'Bentayga', 'R (1).jpeg', 1200, 'V', 1),
+('BMW-7-001', 'B.M.W.', 'Série 7', 'OIP (2).jpeg', 1800, 'F', 1),
+('BMW-M3-001', 'B.M.W.', 'M3', 'R (2).jpeg', 1000, 'G', 1),
+('BMW-M4CS-001', 'B.M.W.', 'M4 CS', 'm4.jpeg', 2000, 'G', 1),
+('BMW-X6M-001', 'B.M.W.', 'X6M', 'OIP (5).jpeg', 1500, 'G', 1),
+('CHEVY-CAM-001', 'Chevrolet ', 'Camaro Bumblebee edition', 'chevrolet-camaro_100684917_h.jpg', 0, 'G', 1),
+('DODG-DMN-001', 'Dodge', 'Charger Demon 170', 'dodge demon.jpeg', 0, 'G', 1),
+('FERRARI-488-001', 'Ferrari', '488 Pista', 'ferrari_488_pista_spider_4k-HD.jpg', 500, 'G', 1),
+('FERRARI-PURO-001', 'Ferrari', 'Purosangue', 'puro.jpeg', 0, 'G', 1),
+('LAMB-URS-001', 'Lamborghini', 'Urus', 'R (4).jpeg', 0, 'G', 1),
+('LEX-LX570-001', 'Lexus', 'LX 570 Super Sport', 'LEXUS LX 570 SPORT PACKAGE 2020 02.jpg', 0, 'D', 1),
+('MB-G63-001', 'Mercedes', 'Classe G 63 AMG', 'R (3).jpeg', 1500, 'G', 1),
+('MB-GLE63S-001', 'Mercedes', 'GLE 63 S AMG Coupé', '5fa2e13ea89f51.26828109.jpeg', 1500, 'G', 1),
+('MB-GLE63S-002', 'Mercedes', 'GLE 63S', 'OIP (9).jpeg', 0, 'G', 1),
+('MB-S680-001', 'Mercedes', 'Classe S 680 Maybach', '2021-Mercedes-Maybach-S-Cla-1024x555.jpg', 1600, 'V', 1),
+('PORSCH-PANA-001', 'Porshe', 'Panamera', 'porsche.jpeg', 0, 'F', 1),
+('PORSCHE-CAYMAN-0', 'Porsche', 'Cayman GT4 RS', '11297_large.jpg', 1100, 'G', 1),
+('RR-CULLINAN-001', 'Rolls Royce', 'Cullinan', '402185-2020-rolls-royce-cullinan.jpg', 900, 'V', 1),
+('RR-SPECTRE-001', 'Rolls Royce', 'Spectre', 'OIP (6).jpeg', 800, 'V', 1),
+('TESLA-3-001', 'Tesla', 'Model 3', 'OIP (7).jpeg', 600, 'H', 1),
+('TESLA-S-001', 'Tesla', 'Model S', 'OIP (8).jpeg', 500, 'H', 1),
+('TESLA-X-001', 'Tesla', 'Model X', 'tesla x.jpeg', 700, 'H', 1),
+('TOYOTA-LC-001', 'Toyota', 'Land Cruiser 300', 'v8 gr.jpeg', 0, 'D', 1);
 
 --
 -- Index pour les tables déchargées
@@ -236,13 +225,6 @@ INSERT INTO `voitures` (`immatriculation`, `marque`, `modele`, `image`, `compteu
 --
 ALTER TABLE `categories`
   ADD UNIQUE KEY `id_categorie` (`id_categorie`);
-
---
--- Index pour la table `choixoptions`
---
-ALTER TABLE `choixoptions`
-  ADD UNIQUE KEY `id_choix_option` (`id_choix_option`),
-  ADD KEY `id_option` (`id_option`,`id_louer`);
 
 --
 -- Index pour la table `clients`
@@ -256,6 +238,7 @@ ALTER TABLE `clients`
 -- Index pour la table `louer`
 --
 ALTER TABLE `louer`
+  ADD PRIMARY KEY (`id_louer`),
   ADD UNIQUE KEY `id_louer` (`id_louer`),
   ADD KEY `id_client` (`id_client`,`immatriculation`),
   ADD KEY `immatriculation` (`immatriculation`);
@@ -288,6 +271,12 @@ ALTER TABLE `voitures`
 --
 ALTER TABLE `clients`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT pour la table `louer`
+--
+ALTER TABLE `louer`
+  MODIFY `id_louer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Contraintes pour les tables déchargées
