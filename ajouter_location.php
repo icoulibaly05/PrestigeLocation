@@ -1,6 +1,12 @@
 <?php include 'config.php'; ?>
 <?php include 'templates/header.php'; ?>
 
+<?php
+$immatriculation = isset($_GET['immatriculation']) ? $_GET['immatriculation'] : '';
+$marque = isset($_GET['marque']) ? $_GET['marque'] : '';
+$modele = isset($_GET['modele']) ? $_GET['modele'] : '';
+?>
+
 <h2>Ajouter une Location</h2>
 <form action="ajouter_location.php" method="post">
     <label for="id_client">Client:</label>
@@ -15,15 +21,13 @@
     </select>
     
     <label for="immatriculation">Voiture:</label>
-    <select id="immatriculation" name="immatriculation" required>
-        <?php
-        $sql = "SELECT immatriculation, marque, modele FROM voitures";
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            echo "<option value='{$row['immatriculation']}'>{$row['marque']} {$row['modele']}</option>";
-        }
-        ?>
-    </select>
+    <input type="text" id="immatriculation" name="immatriculation" value="<?php echo $immatriculation; ?>" readonly>
+    
+    <label for="marque">Marque:</label>
+    <input type="text" id="marque" name="marque" value="<?php echo $marque; ?>" readonly>
+    
+    <label for="modele">Modèle:</label>
+    <input type="text" id="modele" name="modele" value="<?php echo $modele; ?>" readonly>
     
     <label for="date_debut">Date Début:</label>
     <input type="date" id="date_debut" name="date_debut" required>

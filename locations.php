@@ -2,10 +2,6 @@
 <?php include 'templates/header.php'; ?>
 <link rel="stylesheet" type="text/css" href="styles.css">
 
-<div class="button-container">
-    <a href="ajouter_location.php" class="button">Ajouter une Location</a>
-</div>
-
 <h2>Gestion des Locations</h2>
 <table>
     <thead>

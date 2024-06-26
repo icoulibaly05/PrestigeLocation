@@ -14,7 +14,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Adresse</th>
-            <th>Type de Client</th> <!-- Nouvelle colonne pour le type de client -->
+            <th>Type de Client</th> 
             <th>Photo</th>
             <th>Actions</th>
         </tr>
@@ -33,7 +33,7 @@
                 echo "<td>" . $row['nom'] . "</td>";
                 echo "<td>" . $row['prenom'] . "</td>";
                 echo "<td>" . $row['adresse'] . "</td>";
-                echo "<td>" . $row['type_client'] . "</td>"; // Affichage du type de client
+                echo "<td>" . $row['type_client'] . "</td>"; 
                 echo "<td><img src='images/" . $row['photo'] . "' alt='Photo du client' width='100' class='clickable'></td>";
                 echo "<td>";
                 echo "<a href='modifier_client.php?id=" . $row['id_client'] . "'>Modifier</a> ";
@@ -42,7 +42,7 @@
                 echo "</tr>";
             }
         } else {
-            echo "<tr><td colspan='7'>Aucun client trouvé</td></tr>"; // Mise à jour du colspan
+            echo "<tr><td colspan='7'>Aucun client trouvé</td></tr>"; 
         }
         ?>
     </tbody>
